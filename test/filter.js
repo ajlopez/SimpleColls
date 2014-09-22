@@ -11,6 +11,16 @@ exports['filter odd numbers from array'] = function (test) {
     test.deepEqual(result, [1, 3, 5]);
 }
 
+exports['filter odd positions from array'] = function (test) {
+    var result = sc.filter(
+        function (x, n) { return n % 2 == 1; }, 
+        [1, 2, 3, 4, 5]);
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.deepEqual(result, [2, 4]);
+}
+
 exports['filter odd values from object'] = function (test) {
     var result = sc.filter(
         function (x) { return x % 2 == 1; }, 
@@ -32,3 +42,4 @@ exports['filter properties from object'] = function (test) {
     test.equal(typeof result, 'object');
     test.deepEqual(result, { a: 1, c: 3 });
 }
+
