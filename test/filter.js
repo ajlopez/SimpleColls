@@ -11,6 +11,27 @@ exports['filter odd numbers from array'] = function (test) {
     test.deepEqual(result, [1, 3, 5]);
 }
 
+exports['filter odd numbers from object with next'] = function (test) {
+    var counter = 0;
+    
+    var obj = {
+        next: function () { if (counter >= 5) return null; return ++counter; }
+    }
+
+    var result = sc.filter(
+        function (x) { return x % 2 == 1; }, 
+        obj);
+    
+    test.ok(result);
+    test.ok(result.next);
+    test.equal(typeof result.next, 'function');
+    
+    test.equal(result.next(), 1);
+    test.equal(result.next(), 3);
+    test.equal(result.next(), 5);
+    test.equal(result.next(), null);
+}
+
 exports['filter odd positions from array'] = function (test) {
     var result = sc.filter(
         function (x, n) { return n % 2 == 1; }, 
