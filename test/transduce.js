@@ -44,3 +44,23 @@ exports['transduce an object to sum values'] = function (test) {
     test.equal(result, 9);
 }
 
+exports['transduce an object with next'] = function (test) {
+    var counter = 0;
+    
+    var obj = {
+        next: function () { if (counter >= 3) return null; return ++counter; }
+    }
+    
+    var result = sc.transduce(
+        function (x) { return x + 1}, 
+        function (result, value) {
+            result += value;
+            return result;
+        },
+        0,
+        obj);
+        
+    test.ok(result);
+    test.equal(result, 9);
+}
+
