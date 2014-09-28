@@ -43,3 +43,15 @@ exports['range primes'] = function (test) {
     test.equal(result.next(), 13);
     test.equal(result.next(), 17);
 }
+
+exports['range square'] = function (test) {
+    var result = sc.range(1).map(function (x) { return x * x; });
+    
+    test.ok(result);
+
+    test.equal(result.next(), 1);
+    test.equal(result.next(), 4);
+    test.equal(result.next(), 9);
+    test.equal(result.next(), 16);
+    test.equal(result.next(), 25);
+}
