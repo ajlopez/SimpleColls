@@ -87,3 +87,16 @@ exports['use skip'] = function (test) {
     
     test.strictEqual(coll.next(), null);
 }
+
+exports['use take'] = function (test) {
+    var array = [1, 2, 3, 4, 5];
+    
+    var coll = sc.use(array).take(2);
+    
+    var result = coll.next();
+    test.equal(result, 1);
+    var result = coll.next();
+    test.equal(result, 2);
+    
+    test.strictEqual(coll.next(), null);
+}
