@@ -24,6 +24,18 @@ exports['use array to object'] = function (test) {
     test.deepEqual(result, { '0': 1, '1': 2, '2': 3 });
 }
 
+exports['use object to array'] = function (test) {
+    var obj = { a: 1, b: 2, c: 3 };
+    var result = sc.use(obj).toArray();
+    
+    var expected = [];
+    expected['a'] = 1;
+    expected['b'] = 2;
+    expected['c'] = 3;
+    
+    test.deepEqual(result, expected);
+}
+
 exports['use next'] = function (test) {
     var array = [1, 2, 3];
     
