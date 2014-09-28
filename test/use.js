@@ -10,11 +10,18 @@ exports['use of array'] = function (test) {
     test.ok(!Array.isArray(result));
 }
 
-exports['use to array'] = function (test) {
+exports['use array to array'] = function (test) {
     var array = [1, 2, 3];
     var result = sc.use(array).toArray();
     
     test.deepEqual(result, array);
+}
+
+exports['use array to object'] = function (test) {
+    var array = [1, 2, 3];
+    var result = sc.use(array).toObject();
+    
+    test.deepEqual(result, { '0': 1, '1': 2, '2': 3 });
 }
 
 exports['use next'] = function (test) {
