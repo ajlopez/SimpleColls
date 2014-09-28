@@ -19,7 +19,9 @@ exports['use to array'] = function (test) {
 
 exports['use next'] = function (test) {
     var array = [1, 2, 3];
+    
     var coll = sc.use(array);
+    
     var result = coll.next();
     test.equal(result, 1);
     var result = coll.next();
@@ -37,4 +39,19 @@ exports['use next key value'] = function (test) {
     test.deepEqual(result, { key: 0, value: 1 });
     var result = coll.next(true);
     test.deepEqual(result, { key: 1, value: 2 });
+}
+
+exports['use filter next'] = function (test) {
+    var array = [1, 2, 3, 4, 5];
+    
+    var coll = sc.use(array).filter(function (x) { return x % 2 == 1; });
+    
+    var result = coll.next();
+    test.equal(result, 1);
+    var result = coll.next();
+    test.equal(result, 3);
+    var result = coll.next();
+    test.equal(result, 5);
+    
+    test.strictEqual(coll.next(), null);
 }
