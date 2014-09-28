@@ -100,3 +100,12 @@ exports['use take'] = function (test) {
     
     test.strictEqual(coll.next(), null);
 }
+
+exports['use map array'] = function (test) {
+    var array = [1, 2, 3];
+    var result = sc.use(array).map(function (x) { return x + 1 }).toArray();
+    
+    test.ok(result);
+    test.deepEqual(result, [2, 3, 4]);
+}
+
