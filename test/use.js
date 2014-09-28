@@ -74,3 +74,16 @@ exports['use filter next'] = function (test) {
     
     test.strictEqual(coll.next(), null);
 }
+
+exports['use skip'] = function (test) {
+    var array = [1, 2, 3, 4, 5];
+    
+    var coll = sc.use(array).skip(3);
+    
+    var result = coll.next();
+    test.equal(result, 4);
+    var result = coll.next();
+    test.equal(result, 5);
+    
+    test.strictEqual(coll.next(), null);
+}
