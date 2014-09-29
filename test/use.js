@@ -109,3 +109,15 @@ exports['use map array'] = function (test) {
     test.deepEqual(result, [2, 3, 4]);
 }
 
+exports['use with each'] = function (test) {
+    var array = [1, 2, 3];
+    var count = 0;
+    var total = 0;
+    
+    var result = sc.use(array).each(function (x) { count++; total += x; })
+    
+    test.ok(result);
+    test.equal(count, 3);
+    test.equal(total, 6);
+}
+
