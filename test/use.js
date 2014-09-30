@@ -121,3 +121,15 @@ exports['use with each'] = function (test) {
     test.equal(total, 6);
 }
 
+exports['use with reduce'] = function (test) {
+    var array = [1, 2, 3];
+    
+    var result = sc.use(array).reduce(function (result, value) {
+        return result + value;
+    }, 0);
+    
+    test.ok(result);
+    test.equal(result, 6);
+}
+
+
