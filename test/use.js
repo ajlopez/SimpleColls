@@ -132,4 +132,16 @@ exports['use with reduce'] = function (test) {
     test.equal(result, 6);
 }
 
+exports['use with transduce'] = function (test) {
+    var array = [1, 2, 3];
+    
+    var result = sc.use(array).transduce(
+        function (x) { return x + 1; },
+        function (result, value) {
+            return result + value;
+        }, 0);
+    
+    test.ok(result);
+    test.equal(result, 9);
+}
 
